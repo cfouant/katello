@@ -25,27 +25,41 @@ echo ""
 katello-service stop
 service postgresql stop
 
+CONFIGS=(
+    /etc/candlepin
+    /etc/elasticsearch
+    /etc/foreman
+    /etc/foreman-proxy
+    /etc/gutterball
+    /etc/hammer
+    /etc/httpd
+    /etc/katello
+    /etc/katello-installer
+    /etc/pki/content
+    /etc/pki/katello
+    /etc/pki/katello-certs-tools
+    /etc/pki/pulp
+    /etc/pki/tls/certs/katello-node.crt
+    /etc/pki/tls/certs/pulp_consumers_ca.crt
+    /etc/pki/tls/certs/pulp_ssl_cert.crt
+    /etc/pki/tls/private/katello-node.key
+    /etc/pulp
+    /etc/puppet
+    /etc/qpid
+    /etc/qpid-dispatch
+    /etc/sysconfig/elasticsearch
+    /etc/sysconfig/tomcat*
+    /etc/tomcat*
+    /root/ssl-build
+    /var/lib/foreman
+    /var/lib/katello
+    /var/lib/candlepin
+    /var/www/html/pub
+)
+
 # Conf files
 echo "Backing up config files... "
-tar --selinux -czvf config_files.tar.gz \
-/etc/katello-installer \
-/etc/candlepin \
-/etc/foreman \
-/etc/foreman-proxy \
-/etc/gutterball \
-/etc/hammer \
-/etc/pulp \
-/etc/puppet \
-/etc/qpid \
-/etc/qpid-dispatch \
-/etc/elasticsearch \
-/etc/tomcat* \
-/etc/pki/katello \
-/etc/pki/katello-certs-tools \
-/etc/sysconfig/elasticsearch \
-/etc/sysconfig/tomcat* \
-/root/ssl-build \
-/var/www/html/pub
+tar --selinux -czvf config_files.tar.gz ${CONFIGS[*]}
 echo "Done."
 echo ""
 
