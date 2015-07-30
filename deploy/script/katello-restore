@@ -48,7 +48,7 @@ echo ""
 
 # Reset katello
 echo "Resetting Katello"
-tar --selinux -xzvf config_files.tar.gz -C /
+tar --selinux --overwrite xzvf config_files.tar.gz -C /
 katello-installer --reset
 echo "Done."
 echo ""
@@ -62,10 +62,10 @@ echo ""
 
 # Restore system files
 echo "Restoring backend data"
-tar --selinux -xzvf elastic_data.tar.gz -C /
-tar --selinux -xzvf pulp_data.tar.gz -C /
-tar --selinux -xzvf mongo_data.tar.gz -C /
-tar --selinux -xzvf pgsql_data.tar.gz -C /
+tar --selinux --overwrite xzvf elastic_data.tar.gz -C /
+tar --selinux --overwrite xzvf pulp_data.tar.gz -C /
+tar --selinux --overwrite xzvf mongo_data.tar.gz -C /
+tar --selinux --overwrite xzvf pgsql_data.tar.gz -C /
 echo "Done."
 echo ""
 
